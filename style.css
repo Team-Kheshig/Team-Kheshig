@@ -1,0 +1,299 @@
+/* ============================================================
+   kheshig.team - shared man-page stylesheet
+   ============================================================ */
+
+:root{
+  --fg:#ececec;
+  --bg:#0a0a0a;
+  --dim:#6f6f6f;
+  --line:#2b2b2b;
+  --soft:#141414;
+}
+
+*{ box-sizing:border-box; }
+
+html,body{ height:auto; }
+html{ background:var(--bg); }
+body{
+  background:var(--bg);
+  color:var(--fg);
+  font-family:"Courier New", Courier, ui-monospace, monospace;
+  font-size:14px;
+  line-height:1.55;
+  margin:0;
+  padding:0;
+}
+main{
+  max-width:82ch;
+  margin:0 auto;
+  padding:1.5rem 1.5rem 2rem;
+  /* min-height + flex column lets the footer's auto top-margin push
+     it to the bottom of the viewport on short pages. On long pages
+     the sticky bottom keeps it pinned to the viewport bottom while
+     content scrolls underneath. */
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+
+a{
+  color:var(--fg);
+  text-decoration:none;
+  border-bottom:1px dotted var(--dim);
+}
+a:hover{
+  background:var(--fg);
+  color:var(--bg);
+  border-bottom-color:var(--fg);
+}
+
+::selection{ background:var(--fg); color:var(--bg); }
+
+/* ---------- shell prompt ---------- */
+.prompt{
+  color:var(--dim);
+  margin:0 0 1rem;
+  font-size:13px;
+}
+.prompt b{ color:var(--fg); font-weight:400; }
+
+/* ---------- man-page header / footer bars ---------- */
+.bar{
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  gap:1rem;
+  padding:.35rem 0;
+  font-weight:700;
+  font-size:13px;
+  flex-shrink:0;
+}
+.bar > :nth-child(2){ text-align:center; font-weight:400; color:var(--dim); }
+.bar > :last-child{ text-align:right; }
+.bar.top{ border-bottom:1px dashed var(--line); margin-bottom:1.5rem; }
+
+/* Footer bar - flex auto margin pushes it to the bottom of <main>.
+   On a short page (home), <main> is min-height:100vh so the bar
+   lands at the bottom of the viewport. On a long page (a post), the
+   bar simply lives at the end of the content - no sticky behavior,
+   so it stays out of the way while reading. */
+.bar.bot{
+  border-top:1px dashed var(--line);
+  margin-top:auto;
+}
+
+/* ---------- section headings ---------- */
+h2{
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+  margin:1.6rem 0 .5rem;
+  color:var(--fg);
+}
+h2:first-of-type{ margin-top:0; }
+
+h3{
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.04em;
+  margin:1rem 0 .35rem 4ch;
+  color:var(--fg);
+}
+
+p{
+  margin:0 0 .75rem;
+  padding-left:4ch;
+  max-width:72ch;
+}
+strong{ font-weight:700; }
+em{
+  font-style:normal;
+  text-decoration:underline;
+  text-decoration-color:var(--dim);
+  text-underline-offset:3px;
+}
+/* Links inside <em> shouldn't get a second underline; on hover the
+   normal a:hover invert still applies. */
+em a{ border-bottom:none; }
+em a:hover{ border-bottom:none; }
+
+/* ---------- man-page option list ---------- */
+dl.opts{ margin:0 0 .25rem 4ch; }
+dl.opts dt{ font-weight:700; margin-top:0; }
+dl.opts dd{ margin:0 0 .25rem 4ch; color:var(--fg); }
+dl.opts dd a{ margin-right:.25ch; }
+/* In-flag legend, e.g. `--members (*) guest` */
+dl.opts dt .aux{
+  margin-left:1.5ch;
+  font-weight:400;
+  color:var(--dim);
+  font-size:.92em;
+  letter-spacing:.02em;
+}
+
+/* ---------- inline horizontal list ---------- */
+ul.inline{
+  list-style:none;
+  margin:.25rem 0 .25rem 4ch;
+  padding:0;
+  display:flex;
+  flex-wrap:wrap;
+  gap:0 1.25ch;
+  max-width:74ch;
+}
+ul.inline li{ display:inline; }
+ul.inline li + li::before{
+  content:"·";
+  color:var(--dim);
+  margin-right:1.25ch;
+}
+ul.inline .aux{ color:var(--dim); }
+
+/* ---------- listing table (apropos / posts index) ---------- */
+.listing{
+  margin:0 0 .25rem 4ch;
+  font-size:13px;
+}
+.listing .row{
+  display:grid;
+  grid-template-columns:14ch 12ch 1fr;
+  column-gap:1.5ch;
+  padding:.1rem 0;
+}
+.listing .row > :nth-child(1){ font-weight:700; }
+.listing .row > :nth-child(2){ color:var(--dim); }
+.listing .row > :nth-child(3) a{ border:none; }
+.listing .row > :nth-child(3) a:hover{ background:var(--fg); color:var(--bg); }
+
+/* ---------- code blocks ---------- */
+pre.code{
+  margin:.5rem 0 1rem 4ch;
+  padding:.65rem 1ch;
+  background:var(--soft);
+  border-left:2px solid var(--dim);
+  font-family:inherit;
+  font-size:12.5px;
+  line-height:1.5;
+  white-space:pre;
+  overflow-x:auto;
+  max-width:72ch;
+  color:var(--fg);
+}
+code{
+  background:var(--soft);
+  padding:0 .35ch;
+  border:1px solid var(--line);
+  font-size:.9em;
+}
+
+/* ---------- blockquote (in-post epigraph) ---------- */
+blockquote{
+  margin:.5rem 0 1rem 4ch;
+  padding:0 0 0 1.5ch;
+  border-left:2px solid var(--dim);
+  color:var(--dim);
+  max-width:70ch;
+  font-style:italic;
+}
+blockquote p{ padding-left:0; margin:.25rem 0; }
+
+/* ---------- attachment figure (in-post image / pdf embed) ---------- */
+figure.attachment{
+  margin:.75rem 0 1.25rem 4ch;
+  max-width:60ch;
+}
+figure.attachment a{ border:none; display:block; }
+figure.attachment a:hover{ background:transparent; color:inherit; }
+figure.attachment img{
+  display:block;
+  width:100%;
+  height:auto;
+  border:1px solid var(--line);
+}
+figure.attachment iframe{
+  display:block;
+  width:100%;
+  height:520px;
+  border:1px solid var(--line);
+  background:var(--soft);
+}
+figure.attachment figcaption{
+  margin-top:.4rem;
+  color:var(--dim);
+  font-size:12px;
+  letter-spacing:.02em;
+}
+figure.attachment figcaption a{
+  display:inline;
+  border-bottom:1px dotted var(--dim);
+}
+figure.attachment figcaption a:hover{
+  background:var(--fg);
+  color:var(--bg);
+}
+
+/* ---------- post navigation footer ---------- */
+.nav{
+  margin:1rem 0 0 4ch;
+  display:grid;
+  grid-template-columns:max-content 1fr;
+  column-gap:2ch;
+  row-gap:.1rem;
+  font-size:13px;
+}
+.nav dt{ color:var(--dim); font-weight:400; text-transform:lowercase; }
+.nav dd{ margin:0; }
+.nav .none{ color:var(--dim); }
+
+/* ---------- emblem ---------- */
+pre#emblem{
+  margin:.5rem 0 1rem 4ch;
+  padding:0;
+  white-space:pre;
+  line-height:1.0;
+  color:var(--fg);
+  /* Default: scale by viewport width only. */
+  font-size: min(5px, calc((100vw - 64px) / 120));
+  overflow:hidden;
+}
+
+/* ============================================================
+   Narrower viewports - generous breathing room
+   ============================================================ */
+@media (max-width:900px){
+  main{ padding:2rem 1.5rem 2rem; }
+  h2{ margin:2rem 0 .55rem; }
+  p{ margin:0 0 .75rem; }
+  dl.opts{ margin:.5rem 0 .5rem 4ch; }
+  dl.opts dt{ margin-top:.55rem; }
+  dl.opts dd{ margin-bottom:.6rem; }
+  ul.inline{ margin:.5rem 0 .5rem 4ch; }
+  .bar.top{ margin-bottom:1.75rem; }
+  .bar.bot{ margin-top:1.75rem; }
+  .prompt{ margin-bottom:1.25rem; }
+  pre#emblem{ margin:.75rem 0 .75rem 4ch; }
+}
+
+@media (max-width:640px){
+  body{ font-size:12.5px; }
+  main{ padding:1.5rem 1rem 1.75rem; }
+  .bar{ grid-template-columns:1fr; gap:.15rem; text-align:center; }
+  .bar > :nth-child(1),
+  .bar > :nth-child(3){ display:none; }
+  .bar > :nth-child(2){ text-align:center; }
+  p{ padding-left:2ch; }
+  pre#emblem{
+    margin-left:2ch;
+    font-size: min(5px, calc((100vw - 32px) / 120));
+  }
+  h2{ margin:1.75rem 0 .5rem; }
+  h3{ margin-left:2ch; }
+  dl.opts{ margin-left:2ch; }
+  dl.opts dd{ margin-left:2ch; }
+  ul.inline{ margin-left:2ch; }
+  pre.code, blockquote{ margin-left:2ch; }
+  .nav{ margin-left:2ch; grid-template-columns:1fr; }
+  .listing{ margin-left:2ch; font-size:12px; }
+  .listing .row{ grid-template-columns:1fr; row-gap:.05rem; padding:.4rem 0; }
+  .listing .row > :nth-child(2){ font-size:11px; }
+}

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>posts(7) - Kheshig writings</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<main>
+
+<p class="prompt">root@kheshig.team:~# <b>apropos posts</b></p>
+
+<div class="bar top">
+  <span>POSTS(7)</span>
+  <span>Kheshig Writings</span>
+  <span>POSTS(7)</span>
+</div>
+
+<h2>Name</h2>
+<p><strong>posts</strong> - writeups, notes from the field, half-finished thoughts.</p>
+
+<h2>Synopsis</h2>
+<p><strong>posts</strong> [<em>--read</em> N] [<em>--latest</em>] [<em>--by</em> AUTHOR]</p>
+
+<h2>Description</h2>
+<pre id="emblem" aria-label="emblem"></pre>
+
+<h2>List</h2>
+<div class="listing">
+  <div class="row">
+    <span><a href="/posts/1">posts/1</a></span>
+    <span>2026-04-07</span>
+    <span><a href="/posts/1">road to aitu ctf 2026</a></span>
+  </div>
+</div>
+
+<h2>See Also</h2>
+<ul class="inline">
+  <li><a href="/">kheshig</a><span class="aux">(1)</span></li>
+  <li><a href="/achievements/">achievements</a><span class="aux">(7)</span></li>
+</ul>
+
+<h2>Authors</h2>
+<p>Made with &hearts; by <strong>Kheshig</strong>.</p>
+
+<div class="bar bot">
+  <span>Kheshig</span>
+  <span>&copy; 2026 Kheshig</span>
+  <span>POSTS(7)</span>
+</div>
+
+</main>
+
+<script>
+  // Load the ASCII emblem verbatim from logo.txt. Trim blank leading
+  // and trailing rows so it sits tight under DESCRIPTION.
+  fetch('/logo.txt').then(function(r){ return r.text(); }).then(function(t){
+    var lines = t.split('\n');
+    var a = 0, b = lines.length - 1;
+    while (a <= b && lines[a].trim() === '') a++;
+    while (b >= a && lines[b].trim() === '') b--;
+    document.getElementById('emblem').textContent = lines.slice(a, b + 1).join('\n');
+  });
+</script>
+
+</body>
+</html>

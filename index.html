@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kheshig(1) - man page</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<main>
+
+<p class="prompt">root@kheshig.team:~# <b>man kheshig</b></p>
+
+<div class="bar top">
+  <span>KHESHIG(1)</span>
+  <span>Kheshig Manual</span>
+  <span>KHESHIG(1)</span>
+</div>
+
+<h2>Name</h2>
+<p><strong>kheshig</strong> - a CTF team; based in Mongolia.</p>
+
+<h2>Synopsis</h2>
+<p><strong>kheshig</strong> [<em><a href="#members">--members</a></em>] [<em><a href="/posts/">--posts</a></em>] [<em><a href="/achievements/">--achievements</a></em>]</p>
+
+<h2>Description</h2>
+<pre id="emblem" aria-label="emblem"></pre>
+<dl class="opts">
+  <dt id="members"><em>--members</em> <span class="aux">(*) guest</span></dt>
+  <dd>khangal, enkul, llr, 773, *byamb4, *flame, *badangel, *zwique</dd>
+  <dt><em><a href="/posts/">--posts</a></em></dt>
+  <dd>writeups, notes from the field, half-finished thoughts.</dd>
+</dl>
+
+<h2>See Also</h2>
+<ul class="inline">
+  <li><a href="https://ctftime.org/team/305688" rel="noopener">ctftime</a><span class="aux">(org)</span></li>
+  <li><a href="https://github.com/Team-Kheshig" rel="noopener">github</a><span class="aux">(com)</span></li>
+  <li><a href="https://x.com/kheshig" rel="noopener">x</a><span class="aux">(com)</span></li>
+  <li><a href="https://www.facebook.com/kheshig" rel="noopener">facebook</a><span class="aux">(com)</span></li>
+</ul>
+
+<h2>Authors</h2>
+<p>Made with &hearts; by <strong>Kheshig</strong>. &lt;<a href="mailto:hello@kheshig.team">hello@kheshig.team</a>&gt;</p>
+
+<div class="bar bot">
+  <span>Kheshig</span>
+  <span>&copy; 2026 Kheshig</span>
+  <span>KHESHIG(1)</span>
+</div>
+
+</main>
+
+<script>
+  // Load the ASCII emblem verbatim from logo.txt. Trim blank leading
+  // and trailing rows so it sits tight under DESCRIPTION.
+  fetch('/logo.txt').then(function(r){ return r.text(); }).then(function(t){
+    var lines = t.split('\n');
+    var a = 0, b = lines.length - 1;
+    while (a <= b && lines[a].trim() === '') a++;
+    while (b >= a && lines[b].trim() === '') b--;
+    document.getElementById('emblem').textContent = lines.slice(a, b + 1).join('\n');
+  });
+</script>
+
+</body>
+</html>
